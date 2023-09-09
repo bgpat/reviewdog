@@ -1,4 +1,4 @@
-module github.com/bgpat/reviewdog
+module github.com/reviewdog/reviewdog
 
 go 1.21
 
@@ -34,8 +34,6 @@ require (
 	google.golang.org/protobuf v1.31.0
 	gopkg.in/yaml.v3 v3.0.1
 )
-
-require github.com/reviewdog/reviewdog v0.15.0
 
 require (
 	cloud.google.com/go/compute v1.23.0 // indirect
