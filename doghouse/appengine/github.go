@@ -17,9 +17,9 @@ import (
 	"github.com/vvakame/sdlog/aelog"
 	"golang.org/x/oauth2"
 
-	"github.com/reviewdog/reviewdog/doghouse/server"
-	"github.com/reviewdog/reviewdog/doghouse/server/cookieman"
-	"github.com/reviewdog/reviewdog/doghouse/server/storage"
+	"github.com/bgpat/reviewdog/doghouse/server"
+	"github.com/bgpat/reviewdog/doghouse/server/cookieman"
+	"github.com/bgpat/reviewdog/doghouse/server/storage"
 )
 
 type GitHubHandler struct {

@@ -8,8 +8,8 @@ import (
 
 	"golang.org/x/build/gerrit"
 
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/service/serviceutil"
+	"github.com/bgpat/reviewdog"
+	"github.com/bgpat/reviewdog/service/serviceutil"
 )
 
 const (

@@ -5,8 +5,8 @@ import (
 
 	"github.com/google/go-github/v55/github"
 
-	"github.com/reviewdog/reviewdog/doghouse"
-	"github.com/reviewdog/reviewdog/doghouse/server"
+	"github.com/bgpat/reviewdog/doghouse"
+	"github.com/bgpat/reviewdog/doghouse/server"
 )
 
 // GitHubClient is client which talks to GitHub directly instead of talking to

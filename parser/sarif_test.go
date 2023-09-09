@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/reviewdog/reviewdog/service/serviceutil"
+	"github.com/bgpat/reviewdog/service/serviceutil"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 

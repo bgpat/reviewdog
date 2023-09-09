@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/bgpat/reviewdog/proto/rdf"
 )
 
 func TestLinkedMarkdownDiagnostic(t *testing.T) {
