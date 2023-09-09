@@ -104,7 +104,7 @@ func (g *PullRequest) postAsReviewComment(ctx context.Context) error {
 					Body:        github.String(body),
 					CommitID:    &g.sha,
 					Path:        github.String(loc.GetPath()),
-					SubjectType: github.String("FILE"),
+					SubjectType: github.String("file"),
 				})
 				if err != nil {
 					return err
