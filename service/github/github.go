@@ -90,6 +90,7 @@ func (g *PullRequest) Flush(ctx context.Context) error {
 }
 
 func (g *PullRequest) postAsReviewComment(ctx context.Context) error {
+	g.postedcs.DebugLog()
 	comments := make([]*github.DraftReviewComment, 0, len(g.postComments))
 	remaining := make([]*reviewdog.Comment, 0)
 	for _, c := range g.postComments {

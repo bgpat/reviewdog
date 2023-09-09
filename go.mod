@@ -35,6 +35,8 @@ require (
 	gopkg.in/yaml.v3 v3.0.1
 )
 
+require github.com/reviewdog/reviewdog v0.15.0
+
 require (
 	cloud.google.com/go/compute v1.23.0 // indirect
 	github.com/ProtonMail/go-crypto v0.0.0-20230217124315-7d5c6f04bbb8 // indirect
@@ -68,3 +70,5 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230803162519-f966b187b2e5 // indirect
 	google.golang.org/grpc v1.57.0 // indirect
 )
+
+replace github.com/reviewdog/reviewdog => ./
