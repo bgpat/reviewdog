@@ -1,4 +1,4 @@
-module github.com/reviewdog/reviewdog
+module github.com/bgpat/reviewdog
 
 go 1.21
 

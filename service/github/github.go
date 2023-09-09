@@ -97,6 +97,7 @@ func (g *PullRequest) postAsReviewComment(ctx context.Context) error {
 			// GitHub Review API cannot report results outside diff. If it's running
 			// in GitHub Actions, fallback to GitHub Actions log as report .
 			if cienv.IsInGitHubAction() {
+				c.Result.Diagnostic.Message = "GitHub Review API cannot report results outside diff. If it's running in GitHub Actions, fallback to GitHub Actions log as report.\n" + c.Result.Diagnostic.Message
 				githubutils.ReportAsGitHubActionsLog(c.ToolName, "warning", c.Result.Diagnostic)
 			}
 			continue
