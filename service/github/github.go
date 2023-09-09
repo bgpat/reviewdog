@@ -100,12 +100,15 @@ func (g *PullRequest) postAsReviewComment(ctx context.Context) error {
 			if cienv.IsInGitHubAction() {
 				//githubutils.ReportAsGitHubActionsLog(c.ToolName, "warning", c.Result.Diagnostic)
 				loc := c.Result.Diagnostic.GetLocation()
-				g.cli.PullRequests.CreateComment(ctx, g.owner, g.repo, g.pr, &github.PullRequestComment{
+				_, _, err := g.cli.PullRequests.CreateComment(ctx, g.owner, g.repo, g.pr, &github.PullRequestComment{
 					Body:        github.String(body),
 					CommitID:    &g.sha,
 					Path:        github.String(loc.GetPath()),
 					SubjectType: github.String("FILE"),
 				})
+				if err != nil {
+					return err
+				}
 			}
 			continue
 		}
