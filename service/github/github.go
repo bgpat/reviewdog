@@ -93,16 +93,22 @@ func (g *PullRequest) postAsReviewComment(ctx context.Context) error {
 	comments := make([]*github.DraftReviewComment, 0, len(g.postComments))
 	remaining := make([]*reviewdog.Comment, 0)
 	for _, c := range g.postComments {
+		body := buildBody(c)
 		if !c.Result.InDiffContext {
 			// GitHub Review API cannot report results outside diff. If it's running
 			// in GitHub Actions, fallback to GitHub Actions log as report .
 			if cienv.IsInGitHubAction() {
-				c.Result.Diagnostic.Message = "GitHub Review API cannot report results outside diff. If it's running in GitHub Actions, fallback to GitHub Actions log as report.\n" + c.Result.Diagnostic.Message
-				githubutils.ReportAsGitHubActionsLog(c.ToolName, "warning", c.Result.Diagnostic)
+				//githubutils.ReportAsGitHubActionsLog(c.ToolName, "warning", c.Result.Diagnostic)
+				loc := c.Result.Diagnostic.GetLocation()
+				g.cli.PullRequests.CreateComment(ctx, g.owner, g.repo, g.pr, &github.PullRequestComment{
+					Body:        github.String(body),
+					CommitID:    &g.sha,
+					Path:        github.String(loc.GetPath()),
+					SubjectType: github.String("FILE"),
+				})
 			}
-			//continue
+			continue
 		}
-		body := buildBody(c)
 		if g.postedcs.IsPosted(c, githubCommentLine(c), body) {
 			continue
 		}
