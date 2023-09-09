@@ -90,7 +90,6 @@ func (g *PullRequest) Flush(ctx context.Context) error {
 }
 
 func (g *PullRequest) postAsReviewComment(ctx context.Context) error {
-	g.postedcs.DebugLog()
 	comments := make([]*github.DraftReviewComment, 0, len(g.postComments))
 	remaining := make([]*reviewdog.Comment, 0)
 	for _, c := range g.postComments {
@@ -101,7 +100,7 @@ func (g *PullRequest) postAsReviewComment(ctx context.Context) error {
 				c.Result.Diagnostic.Message = "GitHub Review API cannot report results outside diff. If it's running in GitHub Actions, fallback to GitHub Actions log as report.\n" + c.Result.Diagnostic.Message
 				githubutils.ReportAsGitHubActionsLog(c.ToolName, "warning", c.Result.Diagnostic)
 			}
-			continue
+			//continue
 		}
 		body := buildBody(c)
 		if g.postedcs.IsPosted(c, githubCommentLine(c), body) {
